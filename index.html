@@ -1,122 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BN Carpentry LLC — Quality Remodeling You Can Trust</title>
-  <meta name="description" content="BN Carpentry LLC provides full home remodeling services in Connecticut: framing, drywall, doors, windows, painting, kitchen & bathroom renovation, and more." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="images/logo.png" type="image/png" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BN Carpentry LLC</title>
+<meta name="description" content="Home remodeling and construction services in Connecticut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --brand: #0a5ef3;
+    --ink: #0f172a;
+    --muted: #6b7280;
+    --bg: #f9fafb;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: var(--brand);
+    color: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+
+  header img.logo { height: 55px; }
+  header h1 { font-size: 1.4rem; margin: 0; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    background: url('images/bg-hero.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+  .hero * { position: relative; z-index: 1; }
+  .hero h1 { font-size: 3rem; margin-bottom: 12px; }
+  .hero p { font-size: 1.3rem; color: #e5e7eb; }
+
+  /* About */
+  section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+  }
+  section h2 {
+    text-align: center;
+    color: var(--brand);
+    margin-bottom: 18px;
+    font-size: 2rem;
+  }
+  .about p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--ink);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+  .contact-item {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+  }
+  .contact-item h3 {
+    margin: 0 0 8px;
+    color: var(--brand);
+  }
+  .contact-item p, .contact-item a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: #e5e7eb;
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1.1rem; }
+    header h1 { font-size: 1.2rem; }
+  }
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a href="#home" class="brand">
-        <img src="images/logo.png" alt="BN Carpentry LLC logo" class="brand-logo" />
-        <span class="brand-name" id="brandName">BN Carpentry LLC</span>
-      </a>
-      <nav class="menu" id="menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+
+<header>
+  <img class="logo" src="images/logo.png" alt="BN Carpentry logo" />
+  <h1 id="brand_name">BN Carpentry LLC</h1>
+</header>
+
+<section class="hero" id="hero">
+  <h1 id="hero_title">Quality Remodeling You Can Trust</h1>
+  <p id="hero_subtitle">Serving Connecticut and Surrounding Areas</p>
+</section>
+
+<section class="about">
+  <h2>About Us</h2>
+  <p id="about_text">
+    BN Carpentry LLC provides full home remodeling services including framing, drywall, painting, kitchens, bathrooms, and more.
+  </p>
+</section>
+
+<section class="contact">
+  <h2>Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <h3>📍 Location</h3>
+      <p id="location">Danbury, CT</p>
     </div>
-  </header>
-
-  <section id="home" class="hero" style="background-image: url('images/hero.jpg');">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <h1 id="heroTitle">Quality Remodeling You Can Trust</h1>
-      <p id="heroSubtitle">Serving Connecticut and Surrounding Areas</p>
-      <a href="#contact" class="btn btn-primary">Request a Free Estimate</a>
+    <div class="contact-item">
+      <h3>📞 Phone</h3>
+      <p id="phone_display">(475) 206-5484</p>
     </div>
-  </section>
-
-  <section id="about" class="section">
-    <div class="container grid two">
-      <div>
-        <h2>About Us</h2>
-        <p id="aboutText">Loading content...</p>
-        <ul class="bullets">
-          <li>Licensed & insured</li>
-          <li>Quality materials and finishes</li>
-          <li>Clear communication and on-time delivery</li>
-        </ul>
-        <a href="#services" class="btn btn-outline">Explore Services</a>
-      </div>
-      <div class="card about-card">
-        <img src="images/hero.jpg" alt="Remodeled interior" />
-      </div>
+    <div class="contact-item">
+      <h3>💬 WhatsApp</h3>
+      <p><a id="whatsapp" href="https://wa.me/14752065484" target="_blank">Chat Now</a></p>
     </div>
-  </section>
-
-  <section id="services" class="section light">
-    <div class="container">
-      <h2 class="center">Our Services</h2>
-      <p class="center sub">From concept to completion — interior & exterior remodeling.</p>
-      <div class="grid three services-grid" id="servicesGrid"></div>
+    <div class="contact-item">
+      <h3>✉️ Email</h3>
+      <p id="email"><a href="mailto:bncarpentryct@gmail.com">bncarpentryct@gmail.com</a></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="gallery" class="section">
-    <div class="container">
-      <h2 class="center">Recent Projects</h2>
-      <p class="center sub">Add your own before/after photos here.</p>
-      <div class="grid three gallery-grid" id="galleryGrid"></div>
-    </div>
-  </section>
+<footer id="footer_text">
+  © 2025 BN Carpentry LLC. All rights reserved.
+</footer>
 
-  <section id="contact" class="section light">
-    <div class="container grid two">
-      <div>
-        <h2>Contact</h2>
-        <p>Tell us about your project and we’ll get back to you quickly.</p>
-        <form id="contactForm">
-          <div class="form-row">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-row">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-        <div class="contact-details" id="contactDetails"></div>
-      </div>
-      <div class="card about-card">
-        <img src="images/hero.jpg" alt="Home renovation" />
-        <div class="socials" id="socials"></div>
-      </div>
-    </div>
-  </section>
+<script>
+fetch("content/site.json")
+  .then(r => r.json())
+  .then(data => {
+    // Aplica cor principal
+    if (data.primary_color) {
+      document.documentElement.style.setProperty('--brand', data.primary_color);
+    }
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <img src="images/logo.png" alt="BN Carpentry LLC footer logo" />
-        <p>&copy; <span id="year"></span> <span id="brandNameFooter">BN Carpentry LLC</span>. All rights reserved.</p>
-      </div>
-      <div class="footer-socials" id="footerSocials"></div>
-    </div>
-  </footer>
+    // Atualiza textos
+    document.title = data.brand_name || "BN Carpentry";
+    document.getElementById("brand_name").textContent = data.brand_name || "";
+    document.getElementById("hero_title").textContent = data.hero_title || "";
+    document.getElementById("hero_subtitle").textContent = data.hero_subtitle || "";
+    document.getElementById("about_text").textContent = data.about_text || "";
+    document.getElementById("footer_text").textContent = data.footer_text || "";
 
-  <a href="#" class="fab-whatsapp" id="whatsFab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M19.11 17.59c-.27-.14-1.57-.77-1.81-.86-.24-.09-.42-.14-.6.14-.18.27-.69.86-.85 1.04-.16.18-.31.2-.58.07-1.57-.77-2.6-1.38-3.62-3.14-.27-.47.27-.44.77-1.47.09-.18.04-.33-.02-.47-.07-.14-.6-1.44-.82-1.97-.22-.53-.44-.46-.6-.47h-.51c-.16 0-.42.06-.64.29-.22.24-.84.82-.84 2.01 0 1.19.86 2.35.98 2.51.12.16 1.7 2.59 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.57-.64 1.79-1.26.22-.62.22-1.15.16-1.26-.07-.11-.25-.18-.52-.31z"/><path d="M16.06 3C9.42 3 4.03 8.39 4.03 15.02c0 2.65.87 5.1 2.35 7.07L5 29l7.1-1.86a12 12 0 3 0 3.96.64c6.64 0 12.03-5.39 12.03-12.02C28.09 8.39 22.7 3 16.06 3zm0 21.83c-1.91 0-3.68-.5-5.22-1.37l-.37-.21-3.09.81.83-3.01-.24-.38a10.03 10.03 0 1 1 8.09 4.16z"/></svg>
-  </a>
+    // Atualiza imagens
+    const hero = document.getElementById("hero");
+    if (data.background_image) hero.style.backgroundImage = `url(${data.background_image})`;
+    const logo = document.querySelector(".logo");
+    if (data.logo_image) logo.src = data.logo_image;
 
-  <script src="script.js"></script>
+    // Contatos e sociais
+    if (data.contact) {
+      if (data.contact.location) document.getElementById("location").textContent = data.contact.location;
+      if (data.contact.phone_display) document.getElementById("phone_display").textContent = data.contact.phone_display;
+      if (data.contact.email) {
+        const emailEl = document.getElementById("email");
+        emailEl.innerHTML = `<a href="mailto:${data.contact.email}">${data.contact.email}</a>`;
+      }
+    }
+    if (data.socials) {
+      if (data.socials.whatsapp) document.getElementById("whatsapp").href = data.socials.whatsapp;
+    }
+  })
+  .catch(err => console.error("Erro ao carregar site.json:", err));
+</script>
+
 </body>
 </html>
