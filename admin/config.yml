@@ -1,10 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: pbarbon93-wq/bncarpentry-site
   branch: main
+  open_authoring: true
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
-
 publish_mode: editorial_workflow
 
 collections:
