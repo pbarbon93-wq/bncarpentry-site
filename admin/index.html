@@ -4,20 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BN Carpentry CMS</title>
-
-    <!-- Força o carregamento do Decap CMS com delay -->
-    <script>
-      window.addEventListener("load", function() {
-        const script = document.createElement("script");
-        script.src = "https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js";
-        script.onload = function() {
-          console.log("✅ Decap CMS carregado — inicializando após o carregamento completo.");
-          if (window.CMS) window.CMS.init();
-        };
-        document.body.appendChild(script);
-      });
-    </script>
-
     <style>
       html, body {
         height: 100%;
@@ -37,5 +23,26 @@
   </head>
   <body>
     <div class="loading">Loading BN Carpentry CMS...</div>
+
+    <script>
+      // força o carregamento apenas quando o DOM e o CMS estiverem prontos
+      function startCMS() {
+        if (window.CMS) {
+          console.log("✅ Decap CMS inicializando agora...");
+          window.CMS.init();
+        } else {
+          console.log("⚠️ CMS ainda não disponível, tentando novamente...");
+          setTimeout(startCMS, 1500);
+        }
+      }
+
+      // cria e injeta o script do CMS após o DOM carregar
+      window.addEventListener("DOMContentLoaded", function() {
+        const script = document.createElement("script");
+        script.src = "https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js";
+        script.onload = startCMS;
+        document.body.appendChild(script);
+      });
+    </script>
   </body>
 </html>
