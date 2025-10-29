@@ -1,188 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BN Carpentry LLC</title>
-  <meta name="description" content="Professional remodeling and construction services in Connecticut.">
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    :root {
-      --brand: #0a5ef3;
-    }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background-color: #fff;
-      color: #111;
-      line-height: 1.6;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background: var(--brand);
-      color: white;
-    }
-    header img.logo {
-      height: 60px;
-    }
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 100px 20px;
-      color: white;
-      background-size: cover;
-      background-position: center;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-    .hero * {
-      position: relative;
-      z-index: 1;
-    }
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 22px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    section {
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-    section h2 {
-      color: var(--brand);
-      font-size: 32px;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-    .about {
-      text-align: center;
-      font-size: 18px;
-    }
-    .contact {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      text-align: center;
-    }
-    .contact div {
-      background: #f6f6f6;
-      border-radius: 10px;
-      padding: 20px;
-    }
-    footer {
-      background: #111;
-      color: #ddd;
-      text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-    }
-    a {
-      color: var(--brand);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BN Carpentry LLC</title>
+<meta name="description" content="Home remodeling and construction services in Connecticut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --brand: #0a5ef3;
+    --ink: #0f172a;
+    --muted: #6b7280;
+    --bg: #f9fafb;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: var(--brand);
+    color: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+
+  header img.logo { height: 55px; }
+  header h1 { font-size: 1.4rem; margin: 0; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    background: url('images/bg-hero.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+  }
+  .hero * { position: relative; z-index: 1; }
+  .hero h1 { font-size: 3rem; margin-bottom: 12px; }
+  .hero p { font-size: 1.3rem; color: #e5e7eb; }
+
+  /* About */
+  section {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+  }
+  section h2 {
+    text-align: center;
+    color: var(--brand);
+    margin-bottom: 18px;
+    font-size: 2rem;
+  }
+  .about p {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--ink);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+  }
+  .contact-item {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+  }
+  .contact-item h3 {
+    margin: 0 0 8px;
+    color: var(--brand);
+  }
+  .contact-item p, .contact-item a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: #e5e7eb;
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1.1rem; }
+    header h1 { font-size: 1.2rem; }
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <img class="logo" src="images/logo.png" alt="BN Carpentry logo" />
-    <h1 id="brand_name">BN Carpentry LLC</h1>
-  </header>
+<header>
+  <img class="logo" src="images/logo.png" alt="BN Carpentry logo" />
+  <h1 id="brand_name">BN Carpentry LLC</h1>
+</header>
 
-  <section class="hero" id="hero">
-    <h1 id="hero_title">Quality Remodeling You Can Trust</h1>
-    <p id="hero_subtitle">Serving Connecticut and Surrounding Areas</p>
-  </section>
+<section class="hero" id="hero">
+  <h1 id="hero_title">Quality Remodeling You Can Trust</h1>
+  <p id="hero_subtitle">Serving Connecticut and Surrounding Areas</p>
+</section>
 
-  <section>
-    <h2>About Us</h2>
-    <p class="about" id="about_text">
-      BN Carpentry LLC provides full home remodeling services including framing, drywall, painting, kitchens and bathrooms, home repairs, and more.
-    </p>
-  </section>
+<section class="about">
+  <h2>About Us</h2>
+  <p id="about_text">
+    BN Carpentry LLC provides full home remodeling services including framing, drywall, painting, kitchens, bathrooms, and more.
+  </p>
+</section>
 
-  <section>
-    <h2>Contact</h2>
-    <div class="contact">
-      <div>
-        <h3>📍 Location</h3>
-        <p id="location">Danbury, CT</p>
-      </div>
-      <div>
-        <h3>📞 Phone</h3>
-        <p id="phone_display">(475) 206-5484</p>
-      </div>
-      <div>
-        <h3>💬 WhatsApp</h3>
-        <p><a id="whatsapp" href="https://wa.me/14752065484" target="_blank">Chat Now</a></p>
-      </div>
-      <div>
-        <h3>✉️ Email</h3>
-        <p id="email"><a href="mailto:bncarpentryct@gmail.com">bncarpentryct@gmail.com</a></p>
-      </div>
+<section class="contact">
+  <h2>Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <h3>📍 Location</h3>
+      <p id="location">Danbury, CT</p>
     </div>
-  </section>
+    <div class="contact-item">
+      <h3>📞 Phone</h3>
+      <p id="phone_display">(475) 206-5484</p>
+    </div>
+    <div class="contact-item">
+      <h3>💬 WhatsApp</h3>
+      <p><a id="whatsapp" href="https://wa.me/14752065484" target="_blank">Chat Now</a></p>
+    </div>
+    <div class="contact-item">
+      <h3>✉️ Email</h3>
+      <p id="email"><a href="mailto:bncarpentryct@gmail.com">bncarpentryct@gmail.com</a></p>
+    </div>
+  </div>
+</section>
 
-  <footer id="footer_text">
-    © 2025 BN Carpentry LLC. All rights reserved.
-  </footer>
+<footer id="footer_text">
+  © 2025 BN Carpentry LLC. All rights reserved.
+</footer>
 
-  <script>
-  fetch("content/site.json")
-    .then(r => r.json())
-    .then(data => {
-      // Atualiza cores
-      if (data.primary_color) {
-        document.documentElement.style.setProperty('--brand', data.primary_color);
-      }
-      // Atualiza textos
-      document.title = data.brand_name || "BN Carpentry";
-      document.getElementById("brand_name").textContent = data.brand_name || "";
-      document.getElementById("hero_title").textContent = data.hero_title || "";
-      document.getElementById("hero_subtitle").textContent = data.hero_subtitle || "";
-      document.getElementById("about_text").textContent = data.about_text || "";
-      document.getElementById("footer_text").textContent = data.footer_text || "";
+<script>
+fetch("content/site.json")
+  .then(r => r.json())
+  .then(data => {
+    // Aplica cor principal
+    if (data.primary_color) {
+      document.documentElement.style.setProperty('--brand', data.primary_color);
+    }
 
-      // Atualiza imagens
-      const hero = document.getElementById("hero");
-      if (data.background_image) {
-        hero.style.backgroundImage = `url(${data.background_image})`;
-      }
-      const logo = document.querySelector(".logo");
-      if (data.logo_image) {
-        logo.src = data.logo_image;
-      }
+    // Atualiza textos
+    document.title = data.brand_name || "BN Carpentry";
+    document.getElementById("brand_name").textContent = data.brand_name || "";
+    document.getElementById("hero_title").textContent = data.hero_title || "";
+    document.getElementById("hero_subtitle").textContent = data.hero_subtitle || "";
+    document.getElementById("about_text").textContent = data.about_text || "";
+    document.getElementById("footer_text").textContent = data.footer_text || "";
 
-      // Atualiza contatos e sociais
-      if (data.contact) {
-        if (data.contact.location) document.getElementById("location").textContent = data.contact.location;
-        if (data.contact.phone_display) document.getElementById("phone_display").textContent = data.contact.phone_display;
-        if (data.contact.email) {
-          const emailEl = document.getElementById("email");
-          emailEl.innerHTML = `<a href="mailto:${data.contact.email}">${data.contact.email}</a>`;
-        }
+    // Atualiza imagens
+    const hero = document.getElementById("hero");
+    if (data.background_image) hero.style.backgroundImage = `url(${data.background_image})`;
+    const logo = document.querySelector(".logo");
+    if (data.logo_image) logo.src = data.logo_image;
+
+    // Contatos e sociais
+    if (data.contact) {
+      if (data.contact.location) document.getElementById("location").textContent = data.contact.location;
+      if (data.contact.phone_display) document.getElementById("phone_display").textContent = data.contact.phone_display;
+      if (data.contact.email) {
+        const emailEl = document.getElementById("email");
+        emailEl.innerHTML = `<a href="mailto:${data.contact.email}">${data.contact.email}</a>`;
       }
-      if (data.socials) {
-        if (data.socials.whatsapp) document.getElementById("whatsapp").href = data.socials.whatsapp;
-      }
-    })
-    .catch(err => console.error("Erro ao carregar site.json:", err));
-  </script>
+    }
+    if (data.socials) {
+      if (data.socials.whatsapp) document.getElementById("whatsapp").href = data.socials.whatsapp;
+    }
+  })
+  .catch(err => console.error("Erro ao carregar site.json:", err));
+</script>
 
 </body>
 </html>
