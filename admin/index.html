@@ -4,25 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BN Carpentry CMS</title>
+    <!-- Carrega Decap CMS -->
     <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        if (typeof window.CMS !== 'undefined') {
-          console.log('✅ Decap CMS carregado — inicializando...');
-          window.CMS.init();
-        } else {
-          setTimeout(() => {
-            if (typeof window.CMS !== 'undefined') window.CMS.init();
-          }, 1500);
-        }
-      });
-    </script>
     <style>
-      html,body{margin:0;padding:0;height:100%;font-family:sans-serif;background:#f9f9f9;}
-      .loading{display:flex;align-items:center;justify-content:center;height:100%;color:#555;}
+      html, body {
+        margin: 0;
+        height: 100%;
+        background: #f9f9f9;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+      #cms {
+        height: 100%;
+      }
     </style>
   </head>
   <body>
-    <div class="loading">Loading BN Carpentry CMS...</div>
+    <!-- container onde o CMS vai renderizar -->
+    <div id="cms">Loading BN Carpentry CMS...</div>
+
+    <script>
+      // inicializa o CMS dentro da div acima
+      document.addEventListener("DOMContentLoaded", function() {
+        if (typeof window.CMS !== "undefined") {
+          window.CMS.init();
+          console.log("✅ Decap CMS inicializado com sucesso");
+        } else {
+          console.warn("⚠️ CMS ainda não disponível, tentando novamente...");
+          setTimeout(() => {
+            if (typeof window.CMS !== "undefined") {
+              window.CMS.init();
+              console.log("✅ Decap CMS inicializado após retry");
+            }
+          }, 1000);
+        }
+      });
+    </script>
   </body>
 </html>
