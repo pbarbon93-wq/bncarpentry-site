@@ -420,15 +420,29 @@ async function loadAll() {
 async function saveAll() {
   try {
     statusEl.textContent = "Saving...";
+
+    // --- PATCH de segurança ---
+    if (site.token) delete site.token;
+    if (site.repo) delete site.repo;
+    if (site.branch) delete site.branch;
+
+    const jsonStr = JSON.stringify(site);
+    if (/gh[pso]_[A-Za-z0-9]{20,}/.test(jsonStr)) {
+      throw new Error("⚠️ Secret-like value detected in content. Please remove any token before saving.");
+    }
+    // --- fim do patch ---
+
     shaSite = await saveContentFile("content/site.json", JSON.stringify(site,null,2), shaSite);
     shaServices = await saveContentFile("content/services.json", JSON.stringify(services,null,2), shaServices);
     shaGallery = await saveContentFile("content/gallery.json", JSON.stringify(gallery,null,2), shaGallery);
+
     statusEl.innerHTML = "<span class='ok'>Saved ✓</span>";
   } catch(e) {
     console.error("Save error:", e);
     statusEl.innerHTML = "<span class='err'>"+(e.message || "Failed to save").replace(/\n/g, ' • ')+"</span>";
   }
 }
+
 
 // ---- events
 $("#btnLoad").addEventListener("click", loadAll);
