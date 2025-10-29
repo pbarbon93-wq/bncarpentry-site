@@ -4,16 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BN Carpentry CMS</title>
-    <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Espera a lib carregar completamente antes de iniciar
         if (typeof window.CMS !== 'undefined') {
           console.log('✅ Decap CMS carregado — inicializando...');
           window.CMS.init();
         } else {
-          console.warn('⚠️ CMS ainda não disponível. Tentando novamente...');
           setTimeout(() => {
             if (typeof window.CMS !== 'undefined') window.CMS.init();
           }, 1500);
