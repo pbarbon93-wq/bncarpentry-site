@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <script>
-      // GitHub OAuth redirect handler
+      // OAuth redirect handler para GitHub Pages
       const params = new URLSearchParams(window.location.hash.substr(1));
       const token = params.get('access_token');
       if (token) {
-        window.localStorage.setItem('gh_token', token);
+        localStorage.setItem('gh_token', token);
         window.location.href = '/bncarpentry-site/admin/';
       } else {
         document.write('<p>Authentication failed. Please try again.</p>');
