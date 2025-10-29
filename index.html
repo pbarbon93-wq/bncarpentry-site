@@ -11,6 +11,21 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/logo.png" type="image/png" />
 </head>
+  <script>
+fetch("content/site.json")
+  .then(r=>r.json())
+  .then(data=>{
+    document.documentElement.style.setProperty('--brand', data.primary_color || '#0a5ef3');
+    if(document.querySelector(".hero")){
+      document.querySelector(".hero").style.backgroundImage=`url(${data.background_image})`;
+      document.querySelector(".hero h1").textContent=data.hero_title;
+      document.querySelector(".hero p").textContent=data.hero_subtitle;
+    }
+    if(document.querySelector(".logo")) document.querySelector(".logo").src=data.logo_image;
+    if(document.querySelector("footer")) document.querySelector("footer").textContent=data.footer_text;
+  });
+</script>
+
 <body>
   <header class="site-header">
     <div class="container nav">
