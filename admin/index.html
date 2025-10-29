@@ -1,11 +1,31 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BN Carpentry CMS</title>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-</head>
-<body>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BN Carpentry CMS</title>
+    <!-- Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Espera a lib carregar completamente antes de iniciar
+        if (typeof window.CMS !== 'undefined') {
+          console.log('✅ Decap CMS carregado — inicializando...');
+          window.CMS.init();
+        } else {
+          console.warn('⚠️ CMS ainda não disponível. Tentando novamente...');
+          setTimeout(() => {
+            if (typeof window.CMS !== 'undefined') window.CMS.init();
+          }, 1500);
+        }
+      });
+    </script>
+    <style>
+      html,body{margin:0;padding:0;height:100%;font-family:sans-serif;background:#f9f9f9;}
+      .loading{display:flex;align-items:center;justify-content:center;height:100%;color:#555;}
+    </style>
+  </head>
+  <body>
+    <div class="loading">Loading BN Carpentry CMS...</div>
+  </body>
 </html>
