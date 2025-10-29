@@ -1,13 +1,12 @@
 backend:
   name: github
-  repo: pbarbon93-wq/bncarpentry-site
+  repo: "pbarbon93-wq/bncarpentry-site"
   branch: main
   auth_type: implicit
   app_id: Ov23liwHbQ8Ldi4h5BkG
-  base_url: https://api.netlify.com
-  site_domain: pbarbon93-wq.github.io
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+  base_url: "https://api.github.com"
+  site_domain: "https://pbarbon93-wq.github.io"
+
 
 publish_mode: editorial_workflow
 
