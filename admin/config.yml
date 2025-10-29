@@ -2,11 +2,11 @@ backend:
   name: github
   repo: pbarbon93-wq/bncarpentry-site
   branch: main
-  open_authoring: false
   auth_type: implicit
   app_id: Ov23liwHbQ8Ldi4h5BkG
   base_url: https://pbarbon93-wq.github.io/bncarpentry-site
   site_domain: pbarbon93-wq.github.io
+
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
