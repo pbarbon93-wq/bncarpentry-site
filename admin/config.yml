@@ -3,10 +3,9 @@ backend:
   repo: pbarbon93-wq/bncarpentry-site
   branch: main
   auth_type: implicit
-  app_id: Ov23liwHbQ8Ldi4h5BkG
+  app_id: pbarbon93-wq
   base_url: https://pbarbon93-wq.github.io/bncarpentry-site
   site_domain: pbarbon93-wq.github.io
-
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
