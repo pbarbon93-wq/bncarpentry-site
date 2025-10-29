@@ -1,8 +1,8 @@
 {
   "brand_name": "BN Carpentry LLC",
-  "hero_title": "Quality Remodeling You Can Trust",
-  "hero_subtitle": "Serving Connecticut and Surrounding Areas",
-  "about_text": "BN Carpentry LLC provides full home remodeling services including framing/triming, drywall, doors, windows, painting, kitchen and bathroom renovation, home repairs, and more. With years of experience, we deliver reliable craftsmanship and attention to detail.",
+  "hero_title": "Complete Home Remodeling",
+  "hero_subtitle": "Framing, drywall, painting, kitchen, bathroom & more.",
+  "about_text": "BN Carpentry LLC provides reliable remodeling and home improvement services throughout Connecticut.",
   "contact": {
     "phone_display": "(475) 206-5484",
     "phone_whatsapp": "14752065484",
@@ -10,8 +10,8 @@
     "location": "Danbury, CT"
   },
   "socials": {
-    "facebook": "#",
-    "instagram": "#",
-    "whatsapp": "https://wa.me/14752065484"
+    "facebook": "",
+    "instagram": "",
+    "whatsapp": ""
   }
 }
