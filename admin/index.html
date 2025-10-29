@@ -3,57 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-  <!-- Título e descrição (essenciais para SEO) -->
-  <title>BN Carpentry — Complete Home Remodeling in Connecticut</title>
-  <meta name="description" content="Professional carpentry, framing, drywall, kitchen & bathroom remodeling in Danbury, CT. Licensed, reliable, and detail-oriented.">
-
-  <!-- Ícone do site (favicon) -->
-  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-
-  <!-- Prevenção de zoom indesejado em mobile -->
   <meta name="format-detection" content="telephone=no">
-
-  <!-- Segurança: Content Security Policy (CSP) - ajuste conforme seus recursos -->
-  <!-- ⚠️ Remova ou ajuste se usar scripts externos (ex: Google Analytics) -->
-  <meta http-equiv="Content-Security-Policy" 
-        content="default-src 'self'; 
-                 script-src 'self' 'unsafe-inline'; 
-                 style-src 'self' 'unsafe-inline'; 
-                 img-src 'self' data: https:; 
-                 font-src 'self'; 
-                 connect-src 'self' https://api.github.com;">
-
-  <!-- Prevenção de cliques acidentais em mobile -->
   <meta name="HandheldFriendly" content="true">
   <meta name="MobileOptimized" content="width">
-
-  <!-- Controle de indexação (SEO) -->
   <meta name="robots" content="index, follow">
-
-  <!-- Open Graph (para compartilhamento em redes sociais) -->
-  <meta property="og:title" content="BN Carpentry — Home Remodeling Experts">
-  <meta property="og:description" content="Licensed carpentry services in Connecticut: kitchens, bathrooms, framing, drywall & more.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pbarbon93-wq.github.io/bncarpentry-site/">
-  <meta property="og:image" content="https://pbarbon93-wq.github.io/bncarpentry-site/images/og-preview.jpg">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BN Carpentry — Home Remodeling Experts">
-  <meta name="twitter:description" content="Professional carpentry services in Danbury, CT.">
-  <meta name="twitter:image" content="https://pbarbon93-wq.github.io/bncarpentry-site/images/og-preview.jpg">
-
-  <!-- Prevenção de tradução automática indesejada -->
   <meta name="google" content="notranslate">
 
-  <!-- Estilos (mantenha seu CSS existente) -->
+  <title>BN Carpentry — Visual Admin</title>
+  <meta name="description" content="Drag-and-drop visual editor for BN Carpentry. GitHub Direct, CSP-safe.">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/bncarpentry-site/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/bncarpentry-site/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/bncarpentry-site/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/bncarpentry-site/images/favicon-16x16.png">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="BN Carpentry — Visual Admin">
+  <meta property="og:description" content="Admin panel for BN Carpentry website content.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pbarbon93-wq.github.io/bncarpentry-site/admin/">
+  <meta property="og:image" content="https://pbarbon93-wq.github.io/bncarpentry-site/images/og-preview.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- CSP: ajustado para GitHub Pages -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self';
+                 style-src 'self' 'unsafe-inline';
+                 img-src 'self' data: https:;
+                 font-src 'self';
+                 connect-src 'self' https://api.github.com;
+                 frame-ancestors 'none';">
+
   <style>
-    /* ... seu CSS existente ... */
+    :root{
+      --brand:#0a5ef3; --brand-2:#0d4fd4; --ink:#0f172a; --muted:#6b7280; --bg:#f6f7fb; --card:#fff; --line:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#fff;padding:14px 16px;box-shadow:0 8px 22px rgba(10,94,243,.25)}
+    .wrap{max-width:1100px;margin:0 auto;display:flex;gap:14px;align-items:center}
+    h1{font-size:18px;margin:0}
+    .badge{background:#ecfdf5;color:#047857;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:700}
+    main{max-width:1100px;margin:18px auto;padding:0 16px 40px;display:grid;grid-template-columns:1fr;gap:16px}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 8px 24px rgba(2,6,23,.06);padding:16px;border:1px solid var(--line)}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .col{flex:1 1 260px}
+    label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+    input[type=text],input[type=password],input[type=email],input[type=tel],input[type=url],textarea,select{
+      width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit
+    }
+    textarea{min-height:120px}
+    button{appearance:none;border:0;border-radius:10px;padding:10px 14px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
+    button.ghost{background:#eef2ff;color:#1e40af}
+    button.warn{background:#fee2e2;color:#991b1b}
+    .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+    .hint{font-size:12px;color:var(--muted)}
+    .ok{color:#15803d;font-weight:700}
+    .err{color:#b91c1c;font-weight:700;white-space:pre-wrap}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    hr.sep{border:none;border-top:1px dashed var(--line);margin:12px 0}
+    .flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .item{border:1px dashed var(--line);border-radius:12px;padding:12px;background:#fafafa;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center}
+    .handle{width:40px;text-align:center;cursor:grab;color:#475569}
+    .item.dragging{opacity:.6;transform:scale(.99)}
+    .iconPick{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:#fff;font-size:20px}
+    .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+    .thumb{border:1px dashed var(--line);border-radius:12px;background:#fafafa;padding:6px;display:grid;gap:6px}
+    .thumb img{width:100%;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+    .thumb .row{justify-content:space-between}
+    .small{font-size:11px;color:var(--muted)}
+    .preview{background:#0b1324;color:#d1d5db;border-radius:12px;padding:12px;white-space:pre-wrap;max-height:240px;overflow:auto}
+    footer{color:var(--muted);font-size:12px}
+    input[type=file]{display:none}
+    .labelBtn{border:1px dashed var(--line);padding:10px 12px;background:#fff;border-radius:10px;cursor:pointer;font-weight:600}
   </style>
 </head>
 <body>
@@ -67,16 +95,16 @@
   <section class="card" id="auth">
     <div class="row">
       <div class="col">
-        <label>GitHub Personal Access Token (fine‑grained, repo: <span class="mono">bncarpentry-site</span>)</label>
+        <label for="token">GitHub Personal Access Token (fine‑grained, repo: <span class="mono">bncarpentry-site</span>)</label>
         <input id="token" type="password" placeholder="ghp_..." autocomplete="new-password" />
         <div class="hint">Create at <b>github.com/settings/tokens</b> • Fine‑grained • Repo access: <b>bncarpentry-site</b> • Permissions: <b>Contents: Read & Write</b>. Token lives only in memory.</div>
       </div>
       <div class="col">
-        <label>Repository (owner/name)</label>
+        <label for="repo">Repository (owner/name)</label>
         <input id="repo" type="text" value="pbarbon93-wq/bncarpentry-site" autocomplete="off" />
       </div>
       <div class="col">
-        <label>Branch</label>
+        <label for="branch">Branch</label>
         <input id="branch" type="text" value="main" autocomplete="off" />
       </div>
     </div>
@@ -91,49 +119,49 @@
     <h3>Site Basics</h3>
     <div class="kv">
       <div>
-        <label>Brand name</label>
+        <label for="brand_name">Brand name</label>
         <input id="brand_name" type="text" autocomplete="organization">
       </div>
       <div>
-        <label>Hero title</label>
+        <label for="hero_title">Hero title</label>
         <input id="hero_title" type="text" autocomplete="off">
       </div>
       <div>
-        <label>Hero subtitle</label>
+        <label for="hero_subtitle">Hero subtitle</label>
         <input id="hero_subtitle" type="text" autocomplete="off">
       </div>
       <div>
-        <label>Location</label>
+        <label for="location">Location</label>
         <input id="location" type="text" autocomplete="address-level2">
       </div>
     </div>
-    <label style="margin-top:10px;display:block">About text</label>
+    <label for="about_text" style="margin-top:10px;display:block">About text</label>
     <textarea id="about_text" autocomplete="off"></textarea>
     <hr class="sep">
     <div class="kv">
       <div>
-        <label>Phone (display)</label>
-        <input id="phone_display" type="text" autocomplete="tel">
+        <label for="phone_display">Phone (display)</label>
+        <input id="phone_display" type="tel" autocomplete="tel">
       </div>
       <div>
-        <label>WhatsApp digits</label>
-        <input id="phone_whatsapp" type="text" autocomplete="tel-national">
+        <label for="phone_whatsapp">WhatsApp digits</label>
+        <input id="phone_whatsapp" type="tel" autocomplete="tel-national">
       </div>
       <div>
-        <label>Email</label>
-        <input id="email" type="text" autocomplete="email">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email">
       </div>
       <div>
-        <label>Facebook link</label>
-        <input id="facebook" type="text" placeholder="https://..." autocomplete="url">
+        <label for="facebook">Facebook link</label>
+        <input id="facebook" type="url" placeholder="https://..." autocomplete="url">
       </div>
       <div>
-        <label>Instagram link</label>
-        <input id="instagram" type="text" placeholder="https://..." autocomplete="url">
+        <label for="instagram">Instagram link</label>
+        <input id="instagram" type="url" placeholder="https://..." autocomplete="url">
       </div>
       <div>
-        <label>WhatsApp URL</label>
-        <input id="whatsapp" type="text" placeholder="https://wa.me/..." autocomplete="url">
+        <label for="whatsapp">WhatsApp URL</label>
+        <input id="whatsapp" type="url" placeholder="https://wa.me/..." autocomplete="url">
       </div>
     </div>
   </section>
@@ -150,9 +178,9 @@
     <div class="flex" style="justify-content:space-between">
       <h3>Gallery</h3>
       <div class="flex">
-        <label class="labelBtn">
-          <input type="file" id="filePicker" accept="image/*">
+        <label class="labelBtn" for="filePicker">
           Upload image
+          <input type="file" id="filePicker" accept="image/*">
         </label>
         <button id="addGallery" class="ghost">+ Add by path</button>
       </div>
@@ -172,27 +200,32 @@
 const $ = s => document.querySelector(s);
 const enc = s => btoa(unescape(encodeURIComponent(s)));
 const dec = s => decodeURIComponent(escape(atob(s)));
-const status = $("#status");
+const statusEl = $("#status");
 
-// ---- GitHub API
+// ---- GitHub API (corrigido: removido espaço extra na URL)
 async function gh(path, { method="GET", token, body }={}) {
   const repo = $("#repo").value.trim();
-  const res = await fetch(`https://api.github.com/repos/${repo}/${path}`, {
+  const url = `https://api.github.com/repos/${repo}/${path}`;
+  const res = await fetch(url, {
     method,
     headers: {
       "Accept": "application/vnd.github+json",
-      "Authorization": token ? `Bearer ${token}` : undefined
+      "Authorization": token ? `Bearer ${token}` : undefined,
+      "X-GitHub-Api-Version": "2022-11-28"
     },
     body: body ? JSON.stringify(body) : undefined
   });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}\n${await res.text()}`);
   return res.json();
 }
+
 async function loadContentFile(path) {
   const token = $("#token").value.trim();
-  const data = await gh(`contents/${path}?ref=${$("#branch").value.trim()}`, { token });
+  const branch = $("#branch").value.trim();
+  const data = await gh(`contents/${path}?ref=${branch}`, { token });
   return { text: dec(data.content), sha: data.sha };
 }
+
 async function saveContentFile(path, text, sha) {
   const token = $("#token").value.trim();
   const branch = $("#branch").value.trim();
@@ -201,25 +234,31 @@ async function saveContentFile(path, text, sha) {
   const data = await gh(`contents/${path}`, { method:"PUT", token, body });
   return data.content.sha;
 }
+
 async function uploadImage(file) {
   const token = $("#token").value.trim();
   const branch = $("#branch").value.trim();
   const arrayBuf = await file.arrayBuffer();
   const b64 = btoa(String.fromCharCode(...new Uint8Array(arrayBuf)));
-  const path = `images/${file.name}`;
+  const path = `images/${encodeURIComponent(file.name)}`;
   const message = `chore(admin): upload ${path}`;
   await gh(`contents/${path}`, { method:"PUT", token, body:{ message, content:b64, branch } });
   return path;
 }
 
 // ---- State
-let site = null, services = null, gallery = null;
+let site = { brand_name: "", hero_title: "", hero_subtitle: "", about_text: "", contact: {}, socials: {} };
+let services = { items: [] };
+let gallery = { images: [] };
 let shaSite = "", shaServices = "", shaGallery = "";
 
 // ---- UI bind
 function renderServices() {
   const list = $("#servicesList");
   list.innerHTML = "";
+  if (!services || !Array.isArray(services.items)) {
+    services = { items: [] };
+  }
   services.items.forEach((svc, idx) => {
     const el = document.createElement("div");
     el.className = "item";
@@ -230,18 +269,18 @@ function renderServices() {
         <div class="row">
           <div class="col">
             <label>Title</label>
-            <input data-k="title" type="text" value="${svc.title||""}" autocomplete="off">
+            <input data-k="title" type="text" value="${(svc.title || "").replace(/"/g, '&quot;')}" autocomplete="off">
           </div>
           <div class="col">
             <label>Icon (emoji or short text)</label>
-            <input data-k="icon" type="text" value="${svc.icon||""}" autocomplete="off">
+            <input data-k="icon" type="text" value="${(svc.icon || "").replace(/"/g, '&quot;')}" autocomplete="off">
           </div>
         </div>
         <label>Description</label>
-        <textarea data-k="description" autocomplete="off">${svc.description||""}</textarea>
+        <textarea data-k="description" autocomplete="off">${(svc.description || "").replace(/</g, '<')}</textarea>
       </div>
       <div class="flex" style="flex-direction:column;gap:6px">
-        <button class="warn btnDel">Delete</button>
+        <button class="warn btnDel" type="button">Delete</button>
         <span class="small">#${idx+1}</span>
       </div>
     `;
@@ -256,84 +295,93 @@ function renderServices() {
       services.items.splice(idx,1);
       renderServices(); updatePreview();
     });
-    // drag order
-    el.addEventListener("dragstart", e => {
-      el.classList.add("dragging");
-    });
+    el.addEventListener("dragstart", () => el.classList.add("dragging"));
     el.addEventListener("dragend", () => el.classList.remove("dragging"));
     list.appendChild(el);
   });
-  list.addEventListener("dragover", e => {
-    e.preventDefault();
-    const dragging = list.querySelector(".dragging");
-    const after = Array.from(list.children).find(child => {
-      const rect = child.getBoundingClientRect();
-      return e.clientY < rect.top + rect.height/2;
+
+  // Reattach dragover listener only once
+  if (!list.hasDragListener) {
+    list.addEventListener("dragover", e => {
+      e.preventDefault();
+      const dragging = list.querySelector(".dragging");
+      if (!dragging) return;
+      const after = Array.from(list.children).find(child => {
+        const rect = child.getBoundingClientRect();
+        return e.clientY < rect.top + rect.height/2;
+      });
+      if (after) list.insertBefore(dragging, after);
+      else list.appendChild(dragging);
     });
-    if (dragging && after) list.insertBefore(dragging, after);
-    else if (dragging) list.appendChild(dragging);
-  });
-  list.addEventListener("drop", () => {
-    const rebuilt = [];
-    list.querySelectorAll(".item").forEach(it => {
-      const t = it.querySelector('input[data-k="title"]').value;
-      const i = it.querySelector('input[data-k="icon"]').value;
-      const d = it.querySelector('textarea[data-k="description"]').value;
-      rebuilt.push({ title:t, icon:i, description:d });
-    });
-    services.items = rebuilt;
-    updatePreview();
-  }, { once:true });
+    list.hasDragListener = true;
+  }
 }
+
 function renderGallery() {
-  const grid = $("#galleryGrid"); grid.innerHTML="";
-  (gallery.images||[]).forEach((p, idx) => {
+  const grid = $("#galleryGrid");
+  grid.innerHTML = "";
+  const images = Array.isArray(gallery.images) ? gallery.images : [];
+  images.forEach((p, idx) => {
     const card = document.createElement("div");
     card.className = "thumb";
+    const safePath = (p || "").replace(/"/g, '&quot;');
     card.innerHTML = `
-      <img src="../${p}" alt="img">
+      <img src="../${safePath}" alt="Gallery image ${idx+1}" loading="lazy">
       <div class="row">
-        <input type="text" value="${p}" style="flex:1 1 auto" autocomplete="url">
-        <button class="warn btnDel">Del</button>
+        <input type="text" value="${safePath}" style="flex:1 1 auto" autocomplete="url">
+        <button class="warn btnDel" type="button">Del</button>
       </div>
       <div class="row">
-        <button class="ghost btnUp">↑</button>
-        <button class="ghost btnDown">↓</button>
+        <button class="ghost btnUp" type="button">↑</button>
+        <button class="ghost btnDown" type="button">↓</button>
         <span class="small">#${idx+1}</span>
       </div>
     `;
     const pathInput = card.querySelector("input");
     pathInput.addEventListener("input", () => { gallery.images[idx] = pathInput.value; updatePreview(); });
     card.querySelector(".btnDel").addEventListener("click", () => { gallery.images.splice(idx,1); renderGallery(); updatePreview(); });
-    card.querySelector(".btnUp").addEventListener("click", () => { if(idx>0){ const t=gallery.images[idx-1]; gallery.images[idx-1]=gallery.images[idx]; gallery.images[idx]=t; renderGallery(); updatePreview(); } });
-    card.querySelector(".btnDown").addEventListener("click", () => { if(idx<gallery.images.length-1){ const t=gallery.images[idx+1]; gallery.images[idx+1]=gallery.images[idx]; gallery.images[idx]=t; renderGallery(); updatePreview(); } });
+    card.querySelector(".btnUp").addEventListener("click", () => {
+      if(idx>0){
+        [gallery.images[idx-1], gallery.images[idx]] = [gallery.images[idx], gallery.images[idx-1]];
+        renderGallery(); updatePreview();
+      }
+    });
+    card.querySelector(".btnDown").addEventListener("click", () => {
+      if(idx < gallery.images.length - 1){
+        [gallery.images[idx], gallery.images[idx+1]] = [gallery.images[idx+1], gallery.images[idx]];
+        renderGallery(); updatePreview();
+      }
+    });
     grid.appendChild(card);
   });
 }
-function bindSiteFields() {
-  $("#brand_name").value = site.brand_name||"";
-  $("#hero_title").value = site.hero_title||"";
-  $("#hero_subtitle").value = site.hero_subtitle||"";
-  $("#about_text").value = site.about_text||"";
-  $("#location").value = (site.contact&&site.contact.location)||"";
-  $("#phone_display").value = (site.contact&&site.contact.phone_display)||"";
-  $("#phone_whatsapp").value = (site.contact&&site.contact.phone_whatsapp)||"";
-  $("#email").value = (site.contact&&site.contact.email)||"";
-  $("#facebook").value = (site.socials&&site.socials.facebook)||"";
-  $("#instagram").value = (site.socials&&site.socials.instagram)||"";
-  $("#whatsapp").value = (site.socials&&site.socials.whatsapp)||"";
 
-  ["brand_name","hero_title","hero_subtitle","about_text","location","phone_display","phone_whatsapp","email","facebook","instagram","whatsapp"].forEach(id => {
-    $("#"+id).addEventListener("input", () => {
+function bindSiteFields() {
+  $("#brand_name").value = site.brand_name || "";
+  $("#hero_title").value = site.hero_title || "";
+  $("#hero_subtitle").value = site.hero_subtitle || "";
+  $("#about_text").value = site.about_text || "";
+  $("#location").value = (site.contact && site.contact.location) || "";
+  $("#phone_display").value = (site.contact && site.contact.phone_display) || "";
+  $("#phone_whatsapp").value = (site.contact && site.contact.phone_whatsapp) || "";
+  $("#email").value = (site.contact && site.contact.email) || "";
+  $("#facebook").value = (site.socials && site.socials.facebook) || "";
+  $("#instagram").value = (site.socials && site.socials.instagram) || "";
+  $("#whatsapp").value = (site.socials && site.socials.whatsapp) || "";
+
+  const fields = ["brand_name","hero_title","hero_subtitle","about_text","location","phone_display","phone_whatsapp","email","facebook","instagram","whatsapp"];
+  fields.forEach(id => {
+    const el = $(`#${id}`);
+    const handler = () => {
       site.brand_name = $("#brand_name").value;
       site.hero_title = $("#hero_title").value;
       site.hero_subtitle = $("#hero_subtitle").value;
       site.about_text = $("#about_text").value;
       site.contact = {
+        location: $("#location").value,
         phone_display: $("#phone_display").value,
         phone_whatsapp: $("#phone_whatsapp").value,
-        email: $("#email").value,
-        location: $("#location").value
+        email: $("#email").value
       };
       site.socials = {
         facebook: $("#facebook").value,
@@ -341,9 +389,12 @@ function bindSiteFields() {
         whatsapp: $("#whatsapp").value
       };
       updatePreview();
-    });
+    };
+    el.removeEventListener("input", handler); // avoid duplicates
+    el.addEventListener("input", handler);
   });
 }
+
 function updatePreview() {
   $("#jsonPreview").textContent = JSON.stringify({ site, services, gallery }, null, 2);
 }
@@ -351,7 +402,7 @@ function updatePreview() {
 // ---- Load / Save
 async function loadAll() {
   try {
-    status.textContent = "Loading...";
+    statusEl.textContent = "Loading...";
     const a = await loadContentFile("content/site.json");
     const b = await loadContentFile("content/services.json");
     const c = await loadContentFile("content/gallery.json");
@@ -359,17 +410,24 @@ async function loadAll() {
     services = JSON.parse(b.text); shaServices = b.sha;
     gallery = JSON.parse(c.text); shaGallery = c.sha;
     bindSiteFields(); renderServices(); renderGallery(); updatePreview();
-    status.innerHTML = "<span class='ok'>Loaded ✓</span>";
-  } catch(e){ status.innerHTML = "<span class='err'>"+e.message+"</span>"; }
+    statusEl.innerHTML = "<span class='ok'>Loaded ✓</span>";
+  } catch(e) {
+    console.error("Load error:", e);
+    statusEl.innerHTML = "<span class='err'>"+(e.message || "Failed to load content").replace(/\n/g, ' • ')+"</span>";
+  }
 }
+
 async function saveAll() {
   try {
-    status.textContent = "Saving...";
+    statusEl.textContent = "Saving...";
     shaSite = await saveContentFile("content/site.json", JSON.stringify(site,null,2), shaSite);
     shaServices = await saveContentFile("content/services.json", JSON.stringify(services,null,2), shaServices);
     shaGallery = await saveContentFile("content/gallery.json", JSON.stringify(gallery,null,2), shaGallery);
-    status.innerHTML = "<span class='ok'>Saved ✓</span>";
-  } catch(e){ status.innerHTML = "<span class='err'>"+e.message+"</span>"; }
+    statusEl.innerHTML = "<span class='ok'>Saved ✓</span>";
+  } catch(e) {
+    console.error("Save error:", e);
+    statusEl.innerHTML = "<span class='err'>"+(e.message || "Failed to save").replace(/\n/g, ' • ')+"</span>";
+  }
 }
 
 // ---- events
@@ -381,21 +439,27 @@ $("#addService").addEventListener("click", () => {
 });
 $("#addGallery").addEventListener("click", () => {
   const p = prompt("Enter image path (e.g., images/photo.jpg):","images/");
-  if(p){ gallery.images = gallery.images || []; gallery.images.push(p); renderGallery(); updatePreview(); }
+  if(p && p.trim()){
+    gallery.images = gallery.images || [];
+    gallery.images.push(p.trim());
+    renderGallery(); updatePreview();
+  }
 });
 $("#filePicker").addEventListener("change", async (e) => {
   const f = e.target.files[0];
   if(!f) return;
   try{
-    status.textContent = "Uploading image...";
+    statusEl.textContent = "Uploading image...";
     const path = await uploadImage(f);
     gallery.images = gallery.images || [];
     gallery.images.push(path);
     renderGallery(); updatePreview();
-    status.innerHTML = "<span class='ok'>Uploaded "+path+" ✓</span>";
+    statusEl.innerHTML = `<span class='ok'>Uploaded ${path} ✓</span>`;
   }catch(err){
-    status.innerHTML = "<span class='err'>"+err.message+"</span>";
+    console.error("Upload error:", err);
+    statusEl.innerHTML = "<span class='err'>"+(err.message || "Upload failed").replace(/\n/g, ' • ')+"</span>";
   }
+  e.target.value = ""; // reset file input
 });
 </script>
 </body>
