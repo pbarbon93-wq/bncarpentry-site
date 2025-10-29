@@ -4,9 +4,8 @@ backend:
   branch: main
   auth_type: implicit
   app_id: Ov23liwHbQ8Ldi4h5BkG
-  base_url: https://pbarbon93-wq.github.io/bncarpentry-site
+  base_url: https://api.netlify.com
   site_domain: pbarbon93-wq.github.io
-
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
