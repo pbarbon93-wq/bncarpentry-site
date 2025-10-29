@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BN Carpentry — Visual Admin</title>
+<meta name="description" content="Drag-and-drop visual editor for BN Carpentry. GitHub Direct, CSP-safe.">
+<style>
+:root{
+  --brand:#0a5ef3; --brand-2:#0d4fd4; --ink:#0f172a; --muted:#6b7280; --bg:#f6f7fb; --card:#fff; --line:#e5e7eb;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#fff;padding:14px 16px;box-shadow:0 8px 22px rgba(10,94,243,.25)}
+.wrap{max-width:1100px;margin:0 auto;display:flex;gap:14px;align-items:center}
+h1{font-size:18px;margin:0}
+.badge{background:#ecfdf5;color:#047857;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:700}
+main{max-width:1100px;margin:18px auto;padding:0 16px 40px;display:grid;grid-template-columns:1fr;gap:16px}
+.card{background:var(--card);border-radius:16px;box-shadow:0 8px 24px rgba(2,6,23,.06);padding:16px;border:1px solid var(--line)}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.col{flex:1 1 260px}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+input[type=text],input[type=password],textarea,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit}
+textarea{min-height:120px}
+button{appearance:none;border:0;border-radius:10px;padding:10px 14px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
+button.ghost{background:#eef2ff;color:#1e40af}
+button.warn{background:#fee2e2;color:#991b1b}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.hint{font-size:12px;color:var(--muted)}
+.ok{color:#15803d;font-weight:700}
+.err{color:#b91c1c;font-weight:700;white-space:pre-wrap}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+hr.sep{border:none;border-top:1px dashed var(--line);margin:12px 0}
+.flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.list{display:flex;flex-direction:column;gap:10px}
+.item{border:1px dashed var(--line);border-radius:12px;padding:12px;background:#fafafa;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center}
+.handle{width:40px;text-align:center;cursor:grab;color:#475569}
+.item.dragging{opacity:.6;transform:scale(.99)}
+.iconPick{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:#fff;font-size:20px}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.thumb{border:1px dashed var(--line);border-radius:12px;background:#fafafa;padding:6px;display:grid;gap:6px}
+.thumb img{width:100%;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.thumb .row{justify-content:space-between}
+.small{font-size:11px;color:var(--muted)}
+.preview{background:#0b1324;color:#d1d5db;border-radius:12px;padding:12px;white-space:pre-wrap;max-height:240px;overflow:auto}
+footer{color:var(--muted);font-size:12px}
+input[type=file]{display:none}
+.labelBtn{border:1px dashed var(--line);padding:10px 12px;background:#fff;border-radius:10px;cursor:pointer;font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>BN Carpentry — Visual Admin</h1>
+    <span class="badge">Drag & Drop · GitHub Direct · CSP‑Safe</span>
+  </div>
+</header>
+<main>
+  <section class="card" id="auth">
+    <div class="row">
+      <div class="col">
+        <label>GitHub Personal Access Token (fine‑grained, repo: <span class="mono">bncarpentry-site</span>)</label>
+        <input id="token" type="password" placeholder="ghp_..." autocomplete="new-password" />
+        <div class="hint">Create at <b>github.com/settings/tokens</b> • Fine‑grained • Repo access: <b>bncarpentry-site</b> • Permissions: <b>Contents: Read & Write</b>. Token lives only in memory.</div>
+      </div>
+      <div class="col">
+        <label>Repository (owner/name)</label>
+        <input id="repo" type="text" value="pbarbon93-wq/bncarpentry-site" autocomplete="off" />
+      </div>
+      <div class="col">
+        <label>Branch</label>
+        <input id="branch" type="text" value="main" autocomplete="off" />
+      </div>
+    </div>
+    <div class="toolbar">
+      <button id="btnLoad">Load Content</button>
+      <button id="btnSaveAll" class="ghost">Save All</button>
+      <span id="status" class="hint"></span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Site Basics</h3>
+    <div class="kv">
+      <div>
+        <label>Brand name</label>
+        <input id="brand_name" type="text" autocomplete="organization">
+      </div>
+      <div>
+        <label>Hero title</label>
+        <input id="hero_title" type="text" autocomplete="off">
+      </div>
+      <div>
+        <label>Hero subtitle</label>
+        <input id="hero_subtitle" type="text" autocomplete="off">
+      </div>
+      <div>
+        <label>Location</label>
+        <input id="location" type="text" autocomplete="address-level2">
+      </div>
+    </div>
+    <label style="margin-top:10px;display:block">About text</label>
+    <textarea id="about_text" autocomplete="off"></textarea>
+    <hr class="sep">
+    <div class="kv">
+      <div>
+        <label>Phone (display)</label>
+        <input id="phone_display" type="text" autocomplete="tel">
+      </div>
+      <div>
+        <label>WhatsApp digits</label>
+        <input id="phone_whatsapp" type="text" autocomplete="tel-national">
+      </div>
+      <div>
+        <label>Email</label>
+        <input id="email" type="text" autocomplete="email">
+      </div>
+      <div>
+        <label>Facebook link</label>
+        <input id="facebook" type="text" placeholder="https://..." autocomplete="url">
+      </div>
+      <div>
+        <label>Instagram link</label>
+        <input id="instagram" type="text" placeholder="https://..." autocomplete="url">
+      </div>
+      <div>
+        <label>WhatsApp URL</label>
+        <input id="whatsapp" type="text" placeholder="https://wa.me/..." autocomplete="url">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="flex" style="justify-content:space-between">
+      <h3>Services (drag to reorder)</h3>
+      <button id="addService" class="ghost">+ Add service</button>
+    </div>
+    <div id="servicesList" class="list"></div>
+  </section>
+
+  <section class="card">
+    <div class="flex" style="justify-content:space-between">
+      <h3>Gallery</h3>
+      <div class="flex">
+        <label class="labelBtn">
+          <input type="file" id="filePicker" accept="image/*">
+          Upload image
+        </label>
+        <button id="addGallery" class="ghost">+ Add by path</button>
+      </div>
+    </div>
+    <div id="galleryGrid" class="gallery"></div>
+  </section>
+
+  <section class="card">
+    <h3>JSON Preview (what will be saved)</h3>
+    <div class="preview" id="jsonPreview">{ }</div>
+    <footer class="hint">This preview shows the exact JSON that will be committed to <span class="mono">content/*.json</span>.</footer>
+  </section>
+</main>
+
+<script>
+// ---- helpers
+const $ = s => document.querySelector(s);
+const enc = s => btoa(unescape(encodeURIComponent(s)));
+const dec = s => decodeURIComponent(escape(atob(s)));
+const status = $("#status");
+
+// ---- GitHub API
+async function gh(path, { method="GET", token, body }={}) {
+  const repo = $("#repo").value.trim();
+  const res = await fetch(`https://api.github.com/repos/${repo}/${path}`, {
+    method,
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "Authorization": token ? `Bearer ${token}` : undefined
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (!res.ok) throw new Error(`${res.status} ${res.statusText}\n${await res.text()}`);
+  return res.json();
+}
+async function loadContentFile(path) {
+  const token = $("#token").value.trim();
+  const data = await gh(`contents/${path}?ref=${$("#branch").value.trim()}`, { token });
+  return { text: dec(data.content), sha: data.sha };
+}
+async function saveContentFile(path, text, sha) {
+  const token = $("#token").value.trim();
+  const branch = $("#branch").value.trim();
+  const message = `chore(admin): update ${path}`;
+  const body = { message, content: enc(text), branch, sha };
+  const data = await gh(`contents/${path}`, { method:"PUT", token, body });
+  return data.content.sha;
+}
+async function uploadImage(file) {
+  const token = $("#token").value.trim();
+  const branch = $("#branch").value.trim();
+  const arrayBuf = await file.arrayBuffer();
+  const b64 = btoa(String.fromCharCode(...new Uint8Array(arrayBuf)));
+  const path = `images/${file.name}`;
+  const message = `chore(admin): upload ${path}`;
+  await gh(`contents/${path}`, { method:"PUT", token, body:{ message, content:b64, branch } });
+  return path;
+}
+
+// ---- State
+let site = null, services = null, gallery = null;
+let shaSite = "", shaServices = "", shaGallery = "";
+
+// ---- UI bind
+function renderServices() {
+  const list = $("#servicesList");
+  list.innerHTML = "";
+  services.items.forEach((svc, idx) => {
+    const el = document.createElement("div");
+    el.className = "item";
+    el.draggable = true;
+    el.innerHTML = `
+      <div class="handle" title="Drag">☰</div>
+      <div>
+        <div class="row">
+          <div class="col">
+            <label>Title</label>
+            <input data-k="title" type="text" value="${svc.title||""}" autocomplete="off">
+          </div>
+          <div class="col">
+            <label>Icon (emoji or short text)</label>
+            <input data-k="icon" type="text" value="${svc.icon||""}" autocomplete="off">
+          </div>
+        </div>
+        <label>Description</label>
+        <textarea data-k="description" autocomplete="off">${svc.description||""}</textarea>
+      </div>
+      <div class="flex" style="flex-direction:column;gap:6px">
+        <button class="warn btnDel">Delete</button>
+        <span class="small">#${idx+1}</span>
+      </div>
+    `;
+    el.querySelectorAll("input,textarea").forEach(inp => {
+      inp.addEventListener("input", () => {
+        const k = inp.dataset.k;
+        services.items[idx][k] = inp.value;
+        updatePreview();
+      });
+    });
+    el.querySelector(".btnDel").addEventListener("click", () => {
+      services.items.splice(idx,1);
+      renderServices(); updatePreview();
+    });
+    // drag order
+    el.addEventListener("dragstart", e => {
+      el.classList.add("dragging");
+    });
+    el.addEventListener("dragend", () => el.classList.remove("dragging"));
+    list.appendChild(el);
+  });
+  list.addEventListener("dragover", e => {
+    e.preventDefault();
+    const dragging = list.querySelector(".dragging");
+    const after = Array.from(list.children).find(child => {
+      const rect = child.getBoundingClientRect();
+      return e.clientY < rect.top + rect.height/2;
+    });
+    if (dragging && after) list.insertBefore(dragging, after);
+    else if (dragging) list.appendChild(dragging);
+  });
+  list.addEventListener("drop", () => {
+    const rebuilt = [];
+    list.querySelectorAll(".item").forEach(it => {
+      const t = it.querySelector('input[data-k="title"]').value;
+      const i = it.querySelector('input[data-k="icon"]').value;
+      const d = it.querySelector('textarea[data-k="description"]').value;
+      rebuilt.push({ title:t, icon:i, description:d });
+    });
+    services.items = rebuilt;
+    updatePreview();
+  }, { once:true });
+}
+function renderGallery() {
+  const grid = $("#galleryGrid"); grid.innerHTML="";
+  (gallery.images||[]).forEach((p, idx) => {
+    const card = document.createElement("div");
+    card.className = "thumb";
+    card.innerHTML = `
+      <img src="../${p}" alt="img">
+      <div class="row">
+        <input type="text" value="${p}" style="flex:1 1 auto" autocomplete="url">
+        <button class="warn btnDel">Del</button>
+      </div>
+      <div class="row">
+        <button class="ghost btnUp">↑</button>
+        <button class="ghost btnDown">↓</button>
+        <span class="small">#${idx+1}</span>
+      </div>
+    `;
+    const pathInput = card.querySelector("input");
+    pathInput.addEventListener("input", () => { gallery.images[idx] = pathInput.value; updatePreview(); });
+    card.querySelector(".btnDel").addEventListener("click", () => { gallery.images.splice(idx,1); renderGallery(); updatePreview(); });
+    card.querySelector(".btnUp").addEventListener("click", () => { if(idx>0){ const t=gallery.images[idx-1]; gallery.images[idx-1]=gallery.images[idx]; gallery.images[idx]=t; renderGallery(); updatePreview(); } });
+    card.querySelector(".btnDown").addEventListener("click", () => { if(idx<gallery.images.length-1){ const t=gallery.images[idx+1]; gallery.images[idx+1]=gallery.images[idx]; gallery.images[idx]=t; renderGallery(); updatePreview(); } });
+    grid.appendChild(card);
+  });
+}
+function bindSiteFields() {
+  $("#brand_name").value = site.brand_name||"";
+  $("#hero_title").value = site.hero_title||"";
+  $("#hero_subtitle").value = site.hero_subtitle||"";
+  $("#about_text").value = site.about_text||"";
+  $("#location").value = (site.contact&&site.contact.location)||"";
+  $("#phone_display").value = (site.contact&&site.contact.phone_display)||"";
+  $("#phone_whatsapp").value = (site.contact&&site.contact.phone_whatsapp)||"";
+  $("#email").value = (site.contact&&site.contact.email)||"";
+  $("#facebook").value = (site.socials&&site.socials.facebook)||"";
+  $("#instagram").value = (site.socials&&site.socials.instagram)||"";
+  $("#whatsapp").value = (site.socials&&site.socials.whatsapp)||"";
+
+  ["brand_name","hero_title","hero_subtitle","about_text","location","phone_display","phone_whatsapp","email","facebook","instagram","whatsapp"].forEach(id => {
+    $("#"+id).addEventListener("input", () => {
+      site.brand_name = $("#brand_name").value;
+      site.hero_title = $("#hero_title").value;
+      site.hero_subtitle = $("#hero_subtitle").value;
+      site.about_text = $("#about_text").value;
+      site.contact = {
+        phone_display: $("#phone_display").value,
+        phone_whatsapp: $("#phone_whatsapp").value,
+        email: $("#email").value,
+        location: $("#location").value
+      };
+      site.socials = {
+        facebook: $("#facebook").value,
+        instagram: $("#instagram").value,
+        whatsapp: $("#whatsapp").value
+      };
+      updatePreview();
+    });
+  });
+}
+function updatePreview() {
+  $("#jsonPreview").textContent = JSON.stringify({ site, services, gallery }, null, 2);
+}
+
+// ---- Load / Save
+async function loadAll() {
+  try {
+    status.textContent = "Loading...";
+    const a = await loadContentFile("content/site.json");
+    const b = await loadContentFile("content/services.json");
+    const c = await loadContentFile("content/gallery.json");
+    site = JSON.parse(a.text); shaSite = a.sha;
+    services = JSON.parse(b.text); shaServices = b.sha;
+    gallery = JSON.parse(c.text); shaGallery = c.sha;
+    bindSiteFields(); renderServices(); renderGallery(); updatePreview();
+    status.innerHTML = "<span class='ok'>Loaded ✓</span>";
+  } catch(e){ status.innerHTML = "<span class='err'>"+e.message+"</span>"; }
+}
+async function saveAll() {
+  try {
+    status.textContent = "Saving...";
+    shaSite = await saveContentFile("content/site.json", JSON.stringify(site,null,2), shaSite);
+    shaServices = await saveContentFile("content/services.json", JSON.stringify(services,null,2), shaServices);
+    shaGallery = await saveContentFile("content/gallery.json", JSON.stringify(gallery,null,2), shaGallery);
+    status.innerHTML = "<span class='ok'>Saved ✓</span>";
+  } catch(e){ status.innerHTML = "<span class='err'>"+e.message+"</span>"; }
+}
+
+// ---- events
+$("#btnLoad").addEventListener("click", loadAll);
+$("#btnSaveAll").addEventListener("click", saveAll);
+$("#addService").addEventListener("click", () => {
+  services.items.push({ title:"", icon:"", description:"" });
+  renderServices(); updatePreview();
+});
+$("#addGallery").addEventListener("click", () => {
+  const p = prompt("Enter image path (e.g., images/photo.jpg):","images/");
+  if(p){ gallery.images = gallery.images || []; gallery.images.push(p); renderGallery(); updatePreview(); }
+});
+$("#filePicker").addEventListener("change", async (e) => {
+  const f = e.target.files[0];
+  if(!f) return;
+  try{
+    status.textContent = "Uploading image...";
+    const path = await uploadImage(f);
+    gallery.images = gallery.images || [];
+    gallery.images.push(path);
+    renderGallery(); updatePreview();
+    status.innerHTML = "<span class='ok'>Uploaded "+path+" ✓</span>";
+  }catch(err){
+    status.innerHTML = "<span class='err'>"+err.message+"</span>";
+  }
+});
+</script>
+</body>
+</html>
