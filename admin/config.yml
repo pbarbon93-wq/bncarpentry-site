@@ -2,7 +2,8 @@ backend:
   name: github
   repo: pbarbon93-wq/bncarpentry-site
   branch: main
-  open_authoring: true
+  base_url: https://pbarbon93-wq.github.io/bncarpentry-site
+  open_authoring: false
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
