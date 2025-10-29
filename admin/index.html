@@ -1,54 +1,60 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BN Carpentry — Visual Admin</title>
-<meta name="description" content="Drag-and-drop visual editor for BN Carpentry. GitHub Direct, CSP-safe.">
-<style>
-:root{
-  --brand:#0a5ef3; --brand-2:#0d4fd4; --ink:#0f172a; --muted:#6b7280; --bg:#f6f7fb; --card:#fff; --line:#e5e7eb;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-header{position:sticky;top:0;z-index:5;background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#fff;padding:14px 16px;box-shadow:0 8px 22px rgba(10,94,243,.25)}
-.wrap{max-width:1100px;margin:0 auto;display:flex;gap:14px;align-items:center}
-h1{font-size:18px;margin:0}
-.badge{background:#ecfdf5;color:#047857;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:700}
-main{max-width:1100px;margin:18px auto;padding:0 16px 40px;display:grid;grid-template-columns:1fr;gap:16px}
-.card{background:var(--card);border-radius:16px;box-shadow:0 8px 24px rgba(2,6,23,.06);padding:16px;border:1px solid var(--line)}
-.row{display:flex;gap:12px;flex-wrap:wrap}
-.col{flex:1 1 260px}
-label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
-input[type=text],input[type=password],textarea,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit}
-textarea{min-height:120px}
-button{appearance:none;border:0;border-radius:10px;padding:10px 14px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
-button.ghost{background:#eef2ff;color:#1e40af}
-button.warn{background:#fee2e2;color:#991b1b}
-.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
-.hint{font-size:12px;color:var(--muted)}
-.ok{color:#15803d;font-weight:700}
-.err{color:#b91c1c;font-weight:700;white-space:pre-wrap}
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-hr.sep{border:none;border-top:1px dashed var(--line);margin:12px 0}
-.flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.list{display:flex;flex-direction:column;gap:10px}
-.item{border:1px dashed var(--line);border-radius:12px;padding:12px;background:#fafafa;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center}
-.handle{width:40px;text-align:center;cursor:grab;color:#475569}
-.item.dragging{opacity:.6;transform:scale(.99)}
-.iconPick{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:#fff;font-size:20px}
-.kv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
-.thumb{border:1px dashed var(--line);border-radius:12px;background:#fafafa;padding:6px;display:grid;gap:6px}
-.thumb img{width:100%;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
-.thumb .row{justify-content:space-between}
-.small{font-size:11px;color:var(--muted)}
-.preview{background:#0b1324;color:#d1d5db;border-radius:12px;padding:12px;white-space:pre-wrap;max-height:240px;overflow:auto}
-footer{color:var(--muted);font-size:12px}
-input[type=file]{display:none}
-.labelBtn{border:1px dashed var(--line);padding:10px 12px;background:#fff;border-radius:10px;cursor:pointer;font-weight:600}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- Título e descrição (essenciais para SEO) -->
+  <title>BN Carpentry — Complete Home Remodeling in Connecticut</title>
+  <meta name="description" content="Professional carpentry, framing, drywall, kitchen & bathroom remodeling in Danbury, CT. Licensed, reliable, and detail-oriented.">
+
+  <!-- Ícone do site (favicon) -->
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+  <!-- Prevenção de zoom indesejado em mobile -->
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Segurança: Content Security Policy (CSP) - ajuste conforme seus recursos -->
+  <!-- ⚠️ Remova ou ajuste se usar scripts externos (ex: Google Analytics) -->
+  <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self'; 
+                 script-src 'self' 'unsafe-inline'; 
+                 style-src 'self' 'unsafe-inline'; 
+                 img-src 'self' data: https:; 
+                 font-src 'self'; 
+                 connect-src 'self' https://api.github.com;">
+
+  <!-- Prevenção de cliques acidentais em mobile -->
+  <meta name="HandheldFriendly" content="true">
+  <meta name="MobileOptimized" content="width">
+
+  <!-- Controle de indexação (SEO) -->
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (para compartilhamento em redes sociais) -->
+  <meta property="og:title" content="BN Carpentry — Home Remodeling Experts">
+  <meta property="og:description" content="Licensed carpentry services in Connecticut: kitchens, bathrooms, framing, drywall & more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pbarbon93-wq.github.io/bncarpentry-site/">
+  <meta property="og:image" content="https://pbarbon93-wq.github.io/bncarpentry-site/images/og-preview.jpg">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BN Carpentry — Home Remodeling Experts">
+  <meta name="twitter:description" content="Professional carpentry services in Danbury, CT.">
+  <meta name="twitter:image" content="https://pbarbon93-wq.github.io/bncarpentry-site/images/og-preview.jpg">
+
+  <!-- Prevenção de tradução automática indesejada -->
+  <meta name="google" content="notranslate">
+
+  <!-- Estilos (mantenha seu CSS existente) -->
+  <style>
+    /* ... seu CSS existente ... */
+  </style>
 </head>
 <body>
 <header>
