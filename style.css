@@ -16,7 +16,6 @@ body {
 }
 
 img { max-width: 100%; display: block; }
-
 .container { width: min(1120px, 92%); margin-inline: auto; }
 
 .site-header {
@@ -27,7 +26,7 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid rgba(0,0,0,.06);
 }
 
-/* --- Navegação --- */
+/* ===== Navegação ===== */
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--black); }
 .brand-logo { height: 42px; width: auto; }
@@ -38,30 +37,33 @@ img { max-width: 100%; display: block; }
 .menu-toggle { display: none; width: 40px; height: 34px; background: transparent; border: 0; padding: 0; cursor: pointer; }
 .menu-toggle span { display: block; height: 3px; background: #333; margin: 6px 0; border-radius: 3px; transition: .25s; }
 
-/* --- Hero Slideshow --- */
+/* ===== HERO SLIDESHOW FIXED ===== */
 .hero {
   position: relative;
   width: 100%;
   height: 90vh;
   overflow: hidden;
 }
-.hero-slideshow img {
+
+.hero-slideshow {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
+}
+
+.hero-slideshow img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
+
 .hero-slideshow img.active {
   opacity: 1;
-}
-.hero-slideshow img.fade-in {
-  animation: fadeIn 1.5s ease-in-out;
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .hero-overlay {
@@ -70,6 +72,7 @@ img { max-width: 100%; display: block; }
   background: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -77,10 +80,11 @@ img { max-width: 100%; display: block; }
   text-align: center;
   padding-top: 35vh;
 }
+
 .hero h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 10px; font-weight: 700; }
 .hero p { opacity: .95; margin: 0 0 22px; }
 
-/* --- Botões, cards, layout etc (mantidos do original) --- */
+/* ===== Layout Geral ===== */
 .btn { display: inline-block; padding: 12px 20px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: .2s; }
 .btn-primary { background: var(--bn); color: #fff; }
 .btn-primary:hover { filter: brightness(.92); }
@@ -122,7 +126,7 @@ img { max-width: 100%; display: block; }
 }
 .service h3 { margin: 8px 0 8px; font-size: 18px; }
 
-/* --- Formulário e footer --- */
+/* ===== Formulário e Rodapé ===== */
 form { margin-top: 10px; }
 .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
 input, textarea {
@@ -176,7 +180,7 @@ input:focus, textarea:focus {
   z-index: 1000;
 }
 
-/* --- Responsivo --- */
+/* ===== Responsivo ===== */
 @media (max-width: 900px) {
   .grid.two { grid-template-columns: 1fr; }
   .grid.three { grid-template-columns: 1fr 1fr; }
