@@ -25,58 +25,49 @@ async function loadContent() {
 
     // Services
     const grid = document.getElementById('servicesGrid');
-    if (grid) {
-      grid.innerHTML = '';
-      const items = services.items || services;
-      items.forEach(s => {
-        const card = document.createElement('div');
-        card.className = 'service card-sm';
-        card.innerHTML = `
-          <div class="icon">${s.icon || ''}</div>
-          <h3>${s.title}</h3>
-          <p>${s.description || ''}</p>
-        `;
-        grid.appendChild(card);
-      });
-    }
+    grid.innerHTML = '';
+    const items = services.items || services;
+    items.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'service card-sm';
+      card.innerHTML = `
+        <div class="icon">${s.icon || ''}</div>
+        <h3>${s.title}</h3>
+        <p>${s.description || ''}</p>
+      `;
+      grid.appendChild(card);
+    });
 
-    // Gallery (index page)
+    // Gallery
     const ggrid = document.getElementById('galleryGrid');
-    if (ggrid) {
-      ggrid.innerHTML = '';
-      (gallery.images || []).slice(0, 6).forEach((src, i) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = `Project ${i + 1}`;
-        ggrid.appendChild(img);
-      });
-    }
+    ggrid.innerHTML = '';
+    (gallery.images || []).forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `Project ${i + 1}`;
+      ggrid.appendChild(img);
+    });
 
     // Contact & socials
     const details = document.getElementById('contactDetails');
-    if (details) {
-      details.innerHTML = `
-        <p><strong>Phone:</strong> <a href="tel:+1${site.contact.phone_whatsapp}">${site.contact.phone_display}</a></p>
-        <p><strong>Email:</strong> <a href="mailto:${site.contact.email}">${site.contact.email}</a></p>
-        <p><strong>Location:</strong> ${site.contact.location}</p>
-      `;
-    }
+    details.innerHTML = `
+      <p><strong>Phone:</strong> <a href="tel:+1${site.contact.phone_whatsapp}">${site.contact.phone_display}</a></p>
+      <p><strong>Email:</strong> <a href="mailto:${site.contact.email}">${site.contact.email}</a></p>
+      <p><strong>Location:</strong> ${site.contact.location}</p>
+    `;
 
     const socials = document.getElementById('socials');
     const footerSocials = document.getElementById('footerSocials');
-    if (socials && footerSocials) {
-      const socialLinks = [
-        { label: 'Facebook', href: site.socials.facebook || '#', aria: 'Facebook' },
-        { label: 'Instagram', href: site.socials.instagram || '#', aria: 'Instagram' },
-        { label: 'WhatsApp', href: site.socials.whatsapp || `https://wa.me/${site.contact.phone_whatsapp}`, aria: 'WhatsApp' },
-      ];
-      socials.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.aria}">${s.label}</a>`).join('');
-      footerSocials.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.aria}">${s.label}</a>`).join('');
-    }
+    const socialLinks = [
+      { label: 'Facebook', href: site.socials.facebook || '#', aria: 'Facebook' },
+      { label: 'Instagram', href: site.socials.instagram || '#', aria: 'Instagram' },
+      { label: 'WhatsApp', href: site.socials.whatsapp || `https://wa.me/${site.contact.phone_whatsapp}`, aria: 'WhatsApp' },
+    ];
+    socials.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.aria}">${s.label}</a>`).join('');
+    footerSocials.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.aria}">${s.label}</a>`).join('');
 
     // WhatsApp floating button
-    const whatsFab = document.getElementById('whatsFab');
-    if (whatsFab) whatsFab.href = `https://wa.me/${site.contact.phone_whatsapp}`;
+    document.getElementById('whatsFab').href = `https://wa.me/${site.contact.phone_whatsapp}`;
   } catch (e) {
     console.error('Error loading content:', e);
   }
@@ -133,43 +124,13 @@ heroImages.forEach((src) => {
 function startSlideshow() {
   const slides = document.querySelectorAll(".hero-slideshow img");
   let current = 0;
+
+  // Fade-in inicial
   slides[current].classList.add("active", "fade-in");
+
   setInterval(() => {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
     slides[current].classList.add("active", "fade-in");
   }, 5000);
 }
-
-// ===== FULL GALLERY AUTO-LOAD (services.html) =====
-function loadFullGallery() {
-  const container = document.getElementById('servicesGallery');
-  if (!container) return;
-
-  const imageFolder = 'images/projects/';
-  const totalImages = 50; // ajuste conforme o número de fotos
-  for (let i = 1; i <= totalImages; i++) {
-    const num = String(i).padStart(2, '0');
-    const img = document.createElement('img');
-    img.src = `${imageFolder}${num}.jpg`;
-    img.alt = `Project ${i}`;
-    img.loading = 'lazy';
-    container.appendChild(img);
-  }
-
-  // Lightbox
-  const lightbox = document.createElement('div');
-  lightbox.className = 'lightbox';
-  const lightImg = document.createElement('img');
-  lightbox.appendChild(lightImg);
-  document.body.appendChild(lightbox);
-
-  container.addEventListener('click', e => {
-    if (e.target.tagName === 'IMG') {
-      lightImg.src = e.target.src;
-      lightbox.classList.add('show');
-    }
-  });
-  lightbox.addEventListener('click', () => lightbox.classList.remove('show'));
-}
-loadFullGallery();
