@@ -87,7 +87,7 @@ form?.addEventListener('submit', (e) => {
   window.location.href = mailto;
 });
 
-// ===== HERO SLIDESHOW (with preload + smooth fade) =====
+// ===== HERO SLIDESHOW (com preload e correção de altura) =====
 const heroImages = [
   "images/hero1.jpg",
   "images/hero2.jpg",
@@ -107,6 +107,17 @@ heroImages.forEach((src) => {
     loaded++;
     if (loaded === heroImages.length) startSlideshow();
   };
+
+  // 🔧 Corrige o layout antes de adicionar ao DOM
+  img.style.position = "absolute";
+  img.style.top = "0";
+  img.style.left = "0";
+  img.style.width = "100%";
+  img.style.height = "100%";
+  img.style.objectFit = "cover";
+  img.style.opacity = "0";
+  img.style.transition = "opacity 1.5s ease-in-out";
+
   slidesContainer?.appendChild(img);
 });
 
@@ -114,12 +125,12 @@ function startSlideshow() {
   const slides = document.querySelectorAll(".hero-slideshow img");
   let current = 0;
 
-  // Fade in inicial
+  // Fade-in inicial
   slides[current].classList.add("active", "fade-in");
 
   setInterval(() => {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
     slides[current].classList.add("active", "fade-in");
-  }, 5000); // troca a cada 5 segundos
+  }, 5000);
 }
