@@ -1,4 +1,4 @@
-// Mobile menu toggle
+// ===== MOBILE MENU TOGGLE =====
 const menu = document.getElementById('menu');
 const menuToggle = document.getElementById('menuToggle');
 menuToggle?.addEventListener('click', () => {
@@ -6,10 +6,10 @@ menuToggle?.addEventListener('click', () => {
   menuToggle.classList.toggle('open');
 });
 
-// Update year
+// ===== UPDATE YEAR =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Load CMS-managed content
+// ===== LOAD CMS-MANAGED CONTENT =====
 async function loadContent() {
   try {
     const site = await fetch('content/site.json').then(r => r.json());
@@ -44,7 +44,7 @@ async function loadContent() {
     (gallery.images || []).forEach((src, i) => {
       const img = document.createElement('img');
       img.src = src;
-      img.alt = `Project ${i+1}`;
+      img.alt = `Project ${i + 1}`;
       ggrid.appendChild(img);
     });
 
@@ -59,23 +59,22 @@ async function loadContent() {
     const socials = document.getElementById('socials');
     const footerSocials = document.getElementById('footerSocials');
     const socialLinks = [
-      { label: 'Facebook', href: site.socials.facebook || '#', aria:'Facebook' },
-      { label: 'Instagram', href: site.socials.instagram || '#', aria:'Instagram' },
-      { label: 'WhatsApp', href: site.socials.whatsapp || `https://wa.me/${site.contact.phone_whatsapp}`, aria:'WhatsApp' },
+      { label: 'Facebook', href: site.socials.facebook || '#', aria: 'Facebook' },
+      { label: 'Instagram', href: site.socials.instagram || '#', aria: 'Instagram' },
+      { label: 'WhatsApp', href: site.socials.whatsapp || `https://wa.me/${site.contact.phone_whatsapp}`, aria: 'WhatsApp' },
     ];
     socials.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.aria}">${s.label}</a>`).join('');
     footerSocials.innerHTML = socialLinks.map(s => `<a href="${s.href}" target="_blank" rel="noopener" aria-label="${s.aria}">${s.label}</a>`).join('');
 
     // WhatsApp floating button
     document.getElementById('whatsFab').href = `https://wa.me/${site.contact.phone_whatsapp}`;
-
   } catch (e) {
     console.error('Error loading content:', e);
   }
 }
 loadContent();
 
-// Contact form via mailto
+// ===== CONTACT FORM VIA MAILTO =====
 const form = document.getElementById('contactForm');
 form?.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -87,14 +86,40 @@ form?.addEventListener('submit', (e) => {
   const mailto = `mailto:bncarpentryct@gmail.com?subject=${subject}&body=${body}`;
   window.location.href = mailto;
 });
-// ===== HERO SLIDESHOW =====
-let currentHero = 0;
-const slides = document.querySelectorAll('.hero-slideshow img');
 
-if (slides.length > 0) {
+// ===== HERO SLIDESHOW (with preload + smooth fade) =====
+const heroImages = [
+  "images/hero1.jpg",
+  "images/hero2.jpg",
+  "images/hero3.jpg",
+  "images/hero4.jpg",
+  "images/hero5.jpg",
+  "images/hero6.jpg"
+];
+
+const slidesContainer = document.querySelector(".hero-slideshow");
+let loaded = 0;
+
+heroImages.forEach((src) => {
+  const img = new Image();
+  img.src = src;
+  img.onload = () => {
+    loaded++;
+    if (loaded === heroImages.length) startSlideshow();
+  };
+  slidesContainer?.appendChild(img);
+});
+
+function startSlideshow() {
+  const slides = document.querySelectorAll(".hero-slideshow img");
+  let current = 0;
+
+  // Fade in inicial
+  slides[current].classList.add("active", "fade-in");
+
   setInterval(() => {
-    slides[currentHero].classList.remove('active');
-    currentHero = (currentHero + 1) % slides.length;
-    slides[currentHero].classList.add('active');
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active", "fade-in");
   }, 5000); // troca a cada 5 segundos
 }
