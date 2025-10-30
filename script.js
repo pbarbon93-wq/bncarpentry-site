@@ -87,3 +87,14 @@ form?.addEventListener('submit', (e) => {
   const mailto = `mailto:bncarpentryct@gmail.com?subject=${subject}&body=${body}`;
   window.location.href = mailto;
 });
+// ===== HERO SLIDESHOW =====
+let currentHero = 0;
+const slides = document.querySelectorAll('.hero-slideshow img');
+
+if (slides.length > 0) {
+  setInterval(() => {
+    slides[currentHero].classList.remove('active');
+    currentHero = (currentHero + 1) % slides.length;
+    slides[currentHero].classList.add('active');
+  }, 5000); // troca a cada 5 segundos
+}
